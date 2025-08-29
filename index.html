@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Taskly Pro — Data Analytics Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><strong>Taskly</strong> Pro — Analytics</div>
+  <div class="actions">
+    <button id="themeBtn" class="btn ghost">Toggle Theme</button>
+    <button id="exportCsvBtn" class="btn">Export CSV</button>
+    <button id="exportReportBtn" class="btn">Export Report</button>
+  </div>
+</header>
+
+<main class="container">
+  <section class="left">
+    <div class="card">
+      <h3>Add Task</h3>
+      <input id="title" placeholder="Task title" />
+      <input id="due" type="date" />
+      <select id="category">
+        <option>Work</option><option>Study</option><option>Personal</option><option>Health</option><option>Errands</option>
+      </select>
+      <div class="row">
+        <button id="addBtn" class="btn primary full">Add Task</button>
+        <button id="cleanBtn" class="btn ghost">Run Data Clean</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Filters & Controls</h3>
+      <input id="search" placeholder="Search title..." />
+      <select id="filterCategory">
+        <option value="All">All Categories</option>
+        <option>Work</option><option>Study</option><option>Personal</option><option>Health</option><option>Errands</option>
+      </select>
+      <select id="filterStatus">
+        <option value="All">All Status</option>
+        <option value="Open">Open</option>
+        <option value="Done">Done</option>
+      </select>
+      <div class="row">
+        <button id="clearBtn" class="btn danger full">Clear All</button>
+        <button id="loadSampleBtn" class="btn full">Load Sample Data</button>
+      </div>
+    </div>
+
+    <div class="card small">
+      <h4>SQL-like Query</h4>
+      <input id="sqlInput" placeholder="e.g. SELECT * FROM tasks WHERE category='Work' AND completed=false" />
+      <div class="row"><button id="runSql" class="btn">Run Query</button><button id="resetSql" class="btn ghost">Reset</button></div>
+      <pre id="sqlOutput" class="sqlout"></pre>
+    </div>
+  </section>
+
+  <section class="center">
+    <div class="card">
+      <h3>Tasks</h3>
+      <div id="taskList" class="task-list"></div>
+    </div>
+    <div class="card">
+      <h3>Quick Insights</h3>
+      <ul id="insights"></ul>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="card">
+      <h3>Analytics Dashboard</h3>
+      <canvas id="completionChart" height="160"></canvas>
+      <canvas id="categoryChart" height="160"></canvas>
+      <canvas id="activityChart" height="160"></canvas>
+      <div class="chart-controls">
+        <label>Filter chart by category: <select id="chartCategory"><option value="All">All</option><option>Work</option><option>Study</option><option>Personal</option><option>Health</option><option>Errands</option></select></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Anomalies & Cleaning</h3>
+      <div id="anomalies"></div>
+      <ul id="cleanLog"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">Data lifecycle demo — Collection → Cleaning → Analysis → Visualization</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
